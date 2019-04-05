@@ -29,7 +29,6 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class HttpUtil {
-    private static final String DEFAULT_CONTENT_TYPE = "application/json";
 
     private String getResponseBody(InputStream responseStream) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(responseStream));
@@ -58,8 +57,6 @@ public class HttpUtil {
     }
 
     private HttpsURLConnection prepareRequestHeaders(HttpsURLConnection connection, JSONObject headers) throws JSONException {
-        connection.setRequestProperty("Content-Type", DEFAULT_CONTENT_TYPE);
-        connection.setRequestProperty("Accept", DEFAULT_CONTENT_TYPE);
 
         if (headers != null) {
             Iterator<String> iterator = headers.keys();
